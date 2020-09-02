@@ -24,6 +24,36 @@ func CoinChangeDP(coins []int, amount int) int {
 	return dp[amount]
 }
 
+//CombinationSum4 换硬币组合数量，硬币顺序不同算不同的组合
+//377. https://leetcode-cn.com/problems/combination-sum-iv/
+func CombinationSum4(nums []int, target int) int {
+	//sum[i] 组成i的最大组合数
+	sum := make([]int, target+1)
+	sum[0] = 1
+	for i := 0; i <= target; i++ {
+		for _, num := range nums {
+			if i >= num {
+				sum[i] += sum[i-num]
+			}
+		}
+	}
+	return sum[target]
+}
+
+//CoinChange2 换硬币组合数量，硬币顺序不同算一个组合
+//518 https://leetcode-cn.com/problems/coin-change-2/
+func CoinChange2(amount int, coins []int) int {
+	sum := make([]int, amount+1)
+	sum[0] = 1
+
+	for _, coin := range coins { //硬币循环在外层，表示每次加一个硬币进来，确保组合不重复
+		for i := coin; i <= amount; i++ {
+			sum[i] += sum[i-coin]
+		}
+	}
+	return sum[amount]
+}
+
 func minInt(a, b int) int {
 	if a < b {
 		b = a

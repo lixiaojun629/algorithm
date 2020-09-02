@@ -36,3 +36,31 @@ func TestIsValidBST(t *testing.T) {
 	}
 	t.Log(IsValidBST(node))
 }
+
+func TestTreeTraverse(t *testing.T) {
+	node1 := NewBinaryTreeNode(1)
+	node2 := NewBinaryTreeNode(2)
+	node3 := NewBinaryTreeNode(3)
+	node4 := NewBinaryTreeNode(4)
+	node5 := NewBinaryTreeNode(5)
+	node6 := NewBinaryTreeNode(6)
+	node7 := NewBinaryTreeNode(7)
+
+	ConnectTreeNodes(node1, node2, node3)
+	ConnectTreeNodes(node2, node4, node5)
+	ConnectTreeNodes(node3, node7, node6)
+	/*
+					  1
+				  2      3
+		        4   5  7   6
+	*/
+
+	// fmt.Println("PreOrder", PreOrder(node1))
+	// fmt.Println("PreOrderStack", PreOrderStack(node1))
+
+	fmt.Println("InOrder", InOrder(node1))
+	fmt.Println("InOrderStack", InOrderStack(node1))
+
+	fmt.Println("PostOrder", PostOrder(node1))
+	fmt.Println("PostOrderStack", PostOrderStack(node1))
+}
