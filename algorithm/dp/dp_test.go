@@ -1,6 +1,7 @@
 package dp
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -31,5 +32,13 @@ func TestStockMaxProfit(t *testing.T) {
 	//t.Log(StockMaxProfit([]int{1,2,3,4,5}))
 	//t.Log(StockMaxProfitK(2, []int{3, 3, 5, 0, 0, 3, 1, 4}))
 	//t.Log(StockMaxProfitK(2, []int{1, 2, 3, 4, 5}))
-	t.Log(greedy([]int{2,4,1}))
+	t.Log(greedy([]int{2, 4, 1}))
+}
+
+func TestLengthOfLongestSubstring(t *testing.T) {
+	// res := LengthOfLongestSubstring("abcabcbb")
+	// res := LengthOfLongestSubstring("pwwkew")
+	res := LengthOfLongestSubstring("aab")
+	fmt.Println(res)
+	t.Log("max length", res)
 }

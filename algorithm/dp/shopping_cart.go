@@ -5,6 +5,7 @@
 package dp
 
 import "fmt"
+
 //https://zh.wikipedia.org/wiki/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98
 //背包问题，f(W) = max{f(W-1),{f(W-w[j])+p[j]|w[j]<=W}}(背包总重量，w[j]物品j的重量,p[j]物品j的价格
 //ShoppingCart 动态规划购物车里面的商品, items 商品价格， n 商品个数，w 满减条件
