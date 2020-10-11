@@ -2,14 +2,9 @@ package tree
 
 //https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/
 
-/**
- * Definition for TreeNode.
- * type TreeNode struct {
- *     Val int
- *     Left *ListNode
- *     Right *ListNode
- * }
- */
+//先从上到下，在每一个节点的左右子树中查找p,q节点，找到以后回溯，
+//回溯过程中，如果左右子树均找到了节点，则此节点即为最近公共祖先，从此以后返回该公共祖先节点
+//如果左右子树仅有一个子树找到了节点，则返回找到的节点。
 func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
 	if root == nil {
 		return nil

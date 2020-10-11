@@ -18,7 +18,7 @@ func FindNextNode(current *BinaryTreeNode) *BinaryTreeNode {
 		}
 		return next
 	}
-
+	//向上找父节点，直到找到当前节点为其左子节点的父节点或找到的父节点为nil,则返回nil
 	for current.parent != nil && current.parent.left != current {
 		current = current.parent
 	}

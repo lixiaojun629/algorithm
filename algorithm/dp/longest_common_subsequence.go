@@ -1,5 +1,8 @@
 package dp
 
+//dp[i][j] text1[0...i-1]和text2[0...j-1]的最长公共子序列
+//text[i-1]==text[j-1]: dp[i][j] = dp[i-1][j-1]+1
+//text[i-1]!=text[j-1]: dp[i][j] = max(dp[i-1][j],dp[i][j-1])
 func LongestCommonSubsequence(text1 string, text2 string) int {
 	l1, l2 := len(text1), len(text2)
 	if l1 == 0 || l2 == 0 {

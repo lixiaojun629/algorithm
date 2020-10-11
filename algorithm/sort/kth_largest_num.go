@@ -28,3 +28,33 @@ func partition2(nums []int, low, high int) int {
 	nums[slow], nums[high] = nums[high], nums[slow]
 	return slow
 }
+
+//https://leetcode-cn.com/problems/zui-xiao-de-kge-shu-lcof/
+func getLeastNumbers(arr []int, k int) []int {
+	low, high := 0, len(arr)-1
+	for low <= high {
+		rank := partition3(arr, low, high)
+		if rank == k-1 {
+			return arr[:k]
+		}
+		if rank > k-1 {
+			high = rank - 1
+		} else {
+			low = rank + 1
+		}
+	}
+	return nil
+}
+
+func partition3(arr []int, low, high int) int {
+	pivot := arr[high]
+	i := low
+	for j := low; j < high; j++ {
+		if arr[j] < pivot {
+			arr[i], arr[j] = arr[j], arr[i]
+			i++
+		}
+	}
+	arr[i], arr[high] = arr[high], arr[i]
+	return i
+}

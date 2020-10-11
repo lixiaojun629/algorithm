@@ -1,5 +1,10 @@
 package dp
 
+//https://leetcode-cn.com/problems/edit-distance/
+
+//minDist[i][j] word1[0...i-1]和word2[0...j-1]的编辑距离
+//word1[i-1]==word2[j-1] : minDist[i][j] = minDist[i-1][j-1]
+//word1[i-1]!=word2[j-1] : minDist[i][j] = 1 + min(minDist[i-1][j],minDist[i][j-1],minDist[i-1][j-1])
 func minDistance(word1 string, word2 string) int {
 	len1, len2 := len(word1), len(word2)
 	//minDist[i][j] word1[1..i]=>word2[1..j]

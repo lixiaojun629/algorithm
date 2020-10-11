@@ -5,6 +5,10 @@ import (
 	"testing"
 )
 
+func TestVerifyPostorderBST(t *testing.T) {
+	fmt.Println(verifyPostorder([]int{1, 2, 5, 10, 6, 9, 4, 3}))
+}
+
 func TestRebuildBinaryTree(t *testing.T) {
 	preOrder := []int{1, 2, 4, 7, 3, 5, 6, 8}
 	inOrder := []int{4, 7, 2, 1, 5, 3, 6, 8}

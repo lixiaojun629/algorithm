@@ -10,29 +10,29 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-var lastVal int = -1 << 31
-
 func IsValidBST(root *TreeNode) bool {
-	return check(root)
-}
+	var lastVal int = -1 << 31
+	var check func(*TreeNode) bool
+	check = func(node *TreeNode) bool {
+		if node == nil {
+			return true
+		}
 
-func check(node *TreeNode) bool {
-	if node == nil {
+		if !check(node.Left) {
+			return false
+		}
+
+		if lastVal >= node.Val {
+			return false
+		}
+		lastVal = node.Val
+
+		if !check(node.Right) {
+			return false
+		}
+
 		return true
 	}
 
-	if !check(node.Left) {
-		return false
-	}
-
-	if lastVal >= node.Val {
-		return false
-	}
-	lastVal = node.Val
-
-	if !check(node.Right) {
-		return false
-	}
-
-	return true
+	return check(root)
 }

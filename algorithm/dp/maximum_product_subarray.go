@@ -1,5 +1,11 @@
 package dp
 
+//https://leetcode-cn.com/problems/maximum-product-subarray/
+//nums[i]>0: dp[i][0] = max(dp[i-1][0]*nums[i],nums[i])
+//           dp[i][1] = dp[i-1][1]*nums[i]
+//nums[i]<0: dp[i][0] = dp[i-1][1]*nums[i]
+//           dp[i][1] = min(dp[i-1][0]*nums[i],nums[i])
+
 func MaxProduct(nums []int) int {
 	//dp[i][0] 以i结尾的子数组的最大正乘积
 	//dp[i][1] 以i结尾的子数组的最大负的乘积
@@ -24,11 +30,9 @@ func MaxProduct(nums []int) int {
 			dp[x][0] = 0
 			dp[x][1] = 0
 		}
-		max := maxInt(dp[x][0], dp[x][1])
-		if max > res {
-			res = max
+		if dp[x][0] > res {
+			res = dp[x][0]
 		}
 	}
 	return res
 }
-

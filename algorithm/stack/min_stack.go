@@ -11,7 +11,7 @@ type MinStack struct {
 func Constructor() MinStack {
 	return MinStack{
 		arr: make([]int, 0),
-		min: 1 << 62,
+		min: 1<<63 - 1,
 	}
 }
 
@@ -46,12 +46,3 @@ func (this *MinStack) Top() int {
 func (this *MinStack) Min() int {
 	return this.min
 }
-
-/**
- * Your MinStack object will be instantiated and called as such:
- * obj := Constructor();
- * obj.Push(x);
- * obj.Pop();
- * param_3 := obj.Top();
- * param_4 := obj.Min();
- */

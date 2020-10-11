@@ -1,9 +1,12 @@
 package dp
 
 import (
-	"fmt"
 	"testing"
 )
+
+func TestCutRope(t *testing.T) {
+	t.Log(cuttingRope(5))
+}
 
 func TestCoinChange(t *testing.T) {
 	//t.Log(CoinChangeRecursive([]int{2}, 3))
@@ -38,7 +41,12 @@ func TestStockMaxProfit(t *testing.T) {
 func TestLengthOfLongestSubstring(t *testing.T) {
 	// res := LengthOfLongestSubstring("abcabcbb")
 	// res := LengthOfLongestSubstring("pwwkew")
-	res := LengthOfLongestSubstring("aab")
-	fmt.Println(res)
-	t.Log("max length", res)
+	// res := LengthOfLongestSubstring("aab")
+	// fmt.Println(res)
+	// t.Log("max length", res)
+}
+
+func TestPackageWeight(t *testing.T) {
+	t.Log(calcWeight([]int{2, 2, 4, 6, 3}, 9))
+	t.Log(calcWeight2([]int{2, 2, 4, 6, 3}, 9))
 }

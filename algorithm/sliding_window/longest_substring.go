@@ -2,34 +2,50 @@ package dp
 
 //剑指offer48
 //https://leetcode-cn.com/problems/zui-chang-bu-han-zhong-fu-zi-fu-de-zi-zi-fu-chuan-lcof/
-
-func LengthOfLongestSubstring(s string) int {
-	//以第i个字符为结尾的最长子字符串的长度
-	subStrLen := make([]int, 0)
-	maxLen := 0
-	for idx := range s {
-		subStrLen = append(subStrLen, 1)
-		if idx > 0 {
-			dup := false
-			i := 1
-			for ; i <= subStrLen[idx-1]; i++ {
-				if s[idx-i] == s[idx] {
-					dup = true
-					break
-				}
-			}
-			if dup {
-				subStrLen[idx] = i
-			} else {
-				subStrLen[idx] = subStrLen[idx-1] + 1
-			}
+//时间复杂度O(n) 空间复杂度O(alpha)（字符集大小）
+//滑动窗口
+func lengthOfLongestSubstring(s string) int {
+	cache := map[byte]bool{}
+	right, ans, n := 0, 0, len(s)
+	for left := range s {
+		if left > 0 {
+			delete(cache, s[left-1])
 		}
-
-		if subStrLen[idx] > maxLen {
-			maxLen = subStrLen[idx]
+		for right < n && !cache[s[right]] {
+			cache[s[right]] = true
+			right++
+		}
+		substrLen := right - left
+		if ans < substrLen {
+			ans = substrLen
 		}
 	}
-	return maxLen
+	return ans
+}
+
+func lengthOfLongestSubstring1(s string) int {
+	if len(s) == 0 {
+		return 0
+	}
+	//以第i个字符为结尾的最长子字符串的长度
+	maxLen := make([]int, len(s))
+	maxLen[0] = 1
+	res := 1
+	for i := 1; i < len(s); i++ {
+		j := i - 1
+		for ; j >= i-maxLen[i-1]; j-- {
+			if s[i] == s[j] {
+				break
+			}
+		}
+
+		maxLen[i] = i - j
+
+		if res < maxLen[i] {
+			res = maxLen[i]
+		}
+	}
+	return res
 }
 
 func LengthOfLongestSubstring2(s string) int {
