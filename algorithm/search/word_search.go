@@ -1,12 +1,7 @@
 package search
 
 func WordSearch(board [][]byte, word string) bool {
-	directions := [][]int{
-		[]int{0, 1},
-		[]int{1, 0},
-		[]int{-1, 0},
-		[]int{0, -1},
-	}
+	directions := [][]int{{0, 1}, {1, 0}, {-1, 0}, {0, -1}}
 	visited := make([][]bool, len(board))
 	for i := 0; i < len(board); i++ {
 		visited[i] = make([]bool, len(board[i]))

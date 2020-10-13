@@ -5,6 +5,11 @@ import (
 	"time"
 )
 
+func TestTrap(t *testing.T) {
+	height := []int{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1}
+	t.Log(trap(height))
+}
+
 func TestFindMedianSortedArray(t *testing.T) {
 	// nums1 := []int{1, 4}
 	// nums2 := []int{2, 3, 5, 6}
