@@ -12,6 +12,17 @@ type ListNode struct {
 	Next *ListNode
 }
 
+func NewList(values []int) *ListNode {
+	var next *ListNode
+	var head *ListNode
+	for i := len(values) - 1; i >= 0; i-- {
+		head = &ListNode{Val: values[i]}
+		head.Next = next
+		next = head
+	}
+	return head
+}
+
 func (n *ListNode) String() string {
 	list := make([]string, 0)
 	for n != nil {

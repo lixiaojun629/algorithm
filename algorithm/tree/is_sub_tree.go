@@ -1,14 +1,6 @@
 package tree
 
 //https://leetcode-cn.com/problems/shu-de-zi-jie-gou-lcof/
-/**
- * Definition for a binary tree node.
- * type TreeNode struct {
- *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
- * }
- */
 
 //递归判断，前序遍历树A，判断A树中是否包含B树
 func isSubStructure(A *TreeNode, B *TreeNode) bool {

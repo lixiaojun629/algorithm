@@ -1,4 +1,4 @@
-package queue
+package sliding_window
 
 //https://leetcode-cn.com/problems/sliding-window-maximum/
 
@@ -6,18 +6,15 @@ func maxSlidingWindow(nums []int, k int) []int {
 	//res保存结果
 	//window保存滑动窗口里数字在nums中的索引
 	res, window := make([]int, 0), make([]int, 0)
-
 	//初始化滑动窗口，滑动窗口忽略旧的小的值
-	for i := 0; i < k-1; i++ {
-		window = appendWindow(window, nums, i)
-	}
-
-	for i := k - 1; i < len(nums); i++ {
-		if len(window) > 0 && window[0] < i-k+1 {
+	for i, n := 0, len(nums); i < n; i++ {
+		if len(window) > 0 && window[0] <= i-k {
 			window = window[1:]
 		}
 		window = appendWindow(window, nums, i)
-		res = append(res, nums[window[0]])
+		if i >= k-1 {
+			res = append(res, nums[window[0]])
+		}
 	}
 	return res
 }

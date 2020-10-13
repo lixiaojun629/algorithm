@@ -15,7 +15,9 @@ func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 }
 
 //从两个排序数组中找到第k小的数字
-//nums1[k/2-1] 与 nums2[k/2-1]相比，每次淘汰较小的 k/2 个数字
+//1、nums1[min(k/2-1,len(nums)-1] 与 nums2[min(k/2-1,len(nums2)-1]相比，每次淘汰较小的 min(k/2,len(nums)) 个数字
+//2、k重新赋值，减去本次淘汰的数字个数
+//3、如果有一个数组已空，则直接从另一个数组查找第k个返回；或k==1 返回两个数组头元素的较小者
 func findKth(nums1 []int, nums2 []int, k int) int {
 	index1, index2 := 0, 0
 	length1, length2 := len(nums1), len(nums2)
@@ -33,11 +35,11 @@ func findKth(nums1 []int, nums2 []int, k int) int {
 		nindex1 := min(index1+k/2-1, length1-1)
 		nindex2 := min(index2+k/2-1, length2-1)
 		if nums1[nindex1] <= nums2[nindex2] {
-			k -= (nindex1 - index1 + 1)
+			k -= nindex1 - index1 + 1
 			index1 = nindex1 + 1
 
 		} else if nums1[nindex1] > nums2[nindex2] {
-			k -= (nindex2 - index2 + 1)
+			k -= nindex2 - index2 + 1
 			index2 = nindex2 + 1
 		}
 	}
@@ -50,7 +52,7 @@ func min(a, b int) int {
 	return b
 }
 
-//归并
+//归并两个有序数组，查找第k个元素返回
 func findMedianSortedArrays1(nums1 []int, nums2 []int) float64 {
 	l1, l2 := len(nums1), len(nums2)
 	l := l1 + l2

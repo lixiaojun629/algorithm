@@ -34,10 +34,10 @@ func lowestCommonAncestorOfSearchBinaryTree(root, p, q *TreeNode) *TreeNode {
 		return root
 	}
 	if p.Val > root.Val && q.Val > root.Val {
-		return lowestCommonAncestor(root.Right, p, q)
+		return lowestCommonAncestorOfSearchBinaryTree(root.Right, p, q)
 	}
 	if p.Val < root.Val && q.Val < root.Val {
-		return lowestCommonAncestor(root.Left, p, q)
+		return lowestCommonAncestorOfSearchBinaryTree(root.Left, p, q)
 	}
 	return root
 }

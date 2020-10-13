@@ -31,3 +31,18 @@ func TestMergeKLink(t *testing.T) {
 		head = head.Next
 	}
 }
+func TestAddTwoNumbers(t *testing.T) {
+	// anode1 := &ListNode{Val: 9}
+	// anode2 := &ListNode{Val: 9}
+	// anode3 := &ListNode{Val: 9}
+	// anode4 := &ListNode{Val: 9}
+
+	// bnode1 := &ListNode{Val: 9}
+
+	// anode1.Next = anode2
+	// anode2.Next = anode3
+	// anode3.Next = anode4
+
+	addTwoNumbers1(NewList([]int{9, 9, 1}), NewList([]int{1}))
+
+}

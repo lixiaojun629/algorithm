@@ -25,6 +25,9 @@ type Node struct {
  * }
  */
 
+// 第一步：循环把每个节点复制一份，放在原节点后面
+// 第二步：循环把复制出的节点Random指针改为指向节点的后一个节点
+// 第三步：分离原链表和复制链表
 func copyRandomList(head *Node) *Node {
 	if head == nil {
 		return nil

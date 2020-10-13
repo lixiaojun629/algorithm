@@ -60,3 +60,22 @@ func search(nums []int, target int) int {
 	}
 	return -1
 }
+
+//154 offer11 https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii/
+//以右边界为轴元素，numbers[high]把数组一分为二，用二分查找最小元素
+//mid= (low +high)/2 下取整，当nums[mid]==nums[right]时，high--不会错过最小元素
+func minArray(numbers []int) int {
+	low, high := 0, len(numbers)-1
+
+	for low < high {
+		mid := low + (high-low)>>1
+		if numbers[mid] > numbers[high] {
+			low = mid + 1
+		} else if numbers[mid] < numbers[high] {
+			high = mid
+		} else if numbers[mid] == numbers[high] {
+			high--
+		}
+	}
+	return numbers[low]
+}
